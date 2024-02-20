@@ -8,13 +8,13 @@ let songs = [
   {
     label: "Hasbihal",
     src: "assest/hasbihal.mp3",
-    img: "assest/pexels-dominika-roseclay-1021876.jpg",
+    img: "assest/pexels-markus-spiske-92083.jpg",
     artist: "artist 2",
   },
   {
     label: "Son",
     src: "assest/son.mp3",
-    img: "assest/pexels-dominika-roseclay-1021876.jpg",
+    img: "assest/pexels-pixabay-159376.jpg",
     artist: "artist 3",
   },
 ];
@@ -29,12 +29,20 @@ const repeatButton = document.getElementById("repeat");
 const playList = document.getElementById("playlist-songs");
 const songName = document.getElementById("song-name");
 const artistName = document.getElementById("song-artist");
+const image=document.getElementById("song-image")
+const progressBar=document.getElementById("current-progress")
+const currentTime=document.getElementById("current-time")
+const maxDuration=document.getElementById("max-duration")
+
+
 
 let currentSong = 0;
 const loadSong = () => {
   songName.innerHTML = songs[currentSong].label;
   artistName.innerHTML = songs[currentSong].artist;
   player.src = songs[currentSong].src;
+  image.src=songs[currentSong].img
+
   Array.from(playList.children).forEach((item, i) => {
     if (i === currentSong) {
       item.style.color = "blue";
@@ -52,6 +60,15 @@ const loadPlaylist = () => {
     playList.appendChild(newSongItem);
   });
 };
+
+const showProgress=()=>{
+  currentTime.innerHTML=Math.floor(player.currentTime/60)+":"+ `${Math.floor(player.currentTime%60)}`.padStart(2,'0')
+  maxDuration.innerHTML=Math.floor(player.duration/60)+":"+`${Math.floor(player.duration%60)}`.padStart(2,'0')
+progressBar.style.width=player.currentTime/player.duration*100+"%"
+}
+
+
+
 
 const play = () => {
   player.play();
@@ -124,3 +141,4 @@ repeatButton.addEventListener("click", repeat);
 
 loadPlaylist();
 loadSong();
+setInterval(showProgress,1000);

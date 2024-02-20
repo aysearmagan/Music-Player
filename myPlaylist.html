@@ -18,7 +18,7 @@
         <i class="fa-solid fa-angle-down"></i>
       </button>
 
-      <img src="" id="song-image" alt="" />
+      <img src="" width="300" id="song-image" alt="" />
 
       <div class="song-details">
         <div id="song-name"></div>
@@ -32,12 +32,11 @@
           <button id="pause" disabled><i class="fa-solid fa-pause"></i></button>
           <button id="next"><i class="fa-solid fa-forward-step"></i></button>
           <button id="repeat"><i class="fa-solid fa-repeat"></i></button>
-          <div id="progress-bar">
-            <div id="current-progress"></div>
-          </div>
+
+
           <div class="time-container">
-            <span id="current-time">current time</span>
-            <span id="max-duration">max duration</span>
+            <span id="current-time"></span> / 
+            <span id="max-duration"></span>
           </div>
           <div id="playlist-container">
             <button id="close-button"><i class="fa-solid fa-xmark"></i></button>
@@ -45,6 +44,9 @@
        
             </ul>
           </div>
+        </div>
+        <div id="progress-bar">
+          <div id="current-progress"></div>
         </div>
       </div>
     </div>
